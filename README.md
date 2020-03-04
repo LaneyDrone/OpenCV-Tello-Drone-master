@@ -1,1 +1,1 @@
-# OpenCV-Tello-Drone-master
+# OpenCV-Tello-Drone
