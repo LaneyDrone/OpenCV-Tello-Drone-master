@@ -6,7 +6,7 @@ import time
 import cv2
 from easytello.stats import Stats
 import time
-#This was removed. Need to check.
+#update check - this was removed
 #import os
 
 class Tello:
@@ -39,7 +39,7 @@ class Tello:
         self.current_ret = False
 
         """
-        #removed check
+        #update check - removed
         self.current_height = 0
         self.new_height = 0
         """
@@ -229,7 +229,7 @@ class Tello:
         return self.current_frame
 
     """
-    #removed check
+    #update check - removed
 
     def up_by(self, dist: int):
         self.current_height = self.get_height()
