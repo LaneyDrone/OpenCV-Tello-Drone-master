@@ -15,4 +15,3 @@ while True:
         print("light")
     else:
         print("dark")
-        
