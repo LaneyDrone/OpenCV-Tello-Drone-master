@@ -37,13 +37,6 @@ class Tello:
         self.command()
         self.current_frame = None
         self.current_ret = False
-
-        """
-        #update check - removed
-        self.current_height = 0
-        self.new_height = 0
-        """
-
         self.file_name_prefix = "FromFlight " + str(time.time())
         self.count = 0
         self.video_thread = threading.Thread(target=self._video_thread)
@@ -227,18 +220,3 @@ class Tello:
             # waiting for good frame
             pass
         return self.current_frame
-
-    """
-    #update check - removed
-
-    def up_by(self, dist: int):
-        self.current_height = self.get_height()
-        self.new_height = self.current_height + dist
-        self.send_command('up', self.new_height)
-
-    def down_by(self, dist: int):
-        self.current_height = self.get_height()
-        self.new_height = self.current_height - dist
-        self.send_command('down', self.new_height)
-
-    """
