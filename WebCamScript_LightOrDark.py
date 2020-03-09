@@ -1,3 +1,5 @@
+#An example of interfacing with the live video feed from your webcam
+
 import WebCam
 import ImageTools as IT
 import time
@@ -13,3 +15,4 @@ while True:
         print("light")
     else:
         print("dark")
+        
