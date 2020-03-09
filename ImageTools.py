@@ -1,3 +1,4 @@
+# Basic tools to process images. This will need many more functions
 import cv2
 
 BLUE = 0
@@ -5,10 +6,8 @@ GREEN = 1
 RED = 2
 GRAY = 3
 
-
 def get_color_channel(frame, color):
     return frame[:, :, color]
-
 
 def avg_color(frame, color):
     if color == GRAY:
@@ -24,3 +23,5 @@ def avg_color(frame, color):
             local_sum = local_sum + frame_channel[row, col]
     return local_sum / (num_rows * num_columns)
 
+def load_image(file_name):
+    return cv2.imread(file_name)
