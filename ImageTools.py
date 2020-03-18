@@ -1,3 +1,5 @@
+# Basic tools to process images. This will need many more functions
+
 import cv2
 import numpy as np
 import FunTools as FT
