@@ -6,8 +6,6 @@ import time
 import cv2
 from easytello.stats import Stats
 import time
-#update check - this was removed
-#import os
 
 class Tello:
     def __init__(self, tello_ip: str = '192.168.10.1', debug: bool = True):
@@ -83,7 +81,7 @@ class Tello:
         while True:
             self.current_ret, self.current_frame = cap.read()
             if self.stream_state and self.current_ret:
-                cv2.imshow('DJI Tello', self.current_frame)
+                cv2.imshow('press space to capture', self.current_frame)
                 # Video Stream is closed if escape key is pressed
                 k = cv2.waitKey(1) & 0xFF
                 if k == 27:
