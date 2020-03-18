@@ -1,5 +1,3 @@
-# Basic tools to process images. This will need many more functions
-
 import cv2
 import numpy as np
 import FunTools as FT
@@ -216,3 +214,9 @@ def get_lines(img):
     horizontal_lines.sort(key = len, reverse = True)
     vertical_lines.sort(key=len, reverse = True)
     return [horizontal_lines, vertical_lines]
+
+
+
+
+
+

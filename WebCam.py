@@ -40,3 +40,5 @@ class WebCam:
         while not self.ret:
             pass
         return self.frame
+
+

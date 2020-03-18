@@ -218,3 +218,7 @@ class Tello:
             # waiting for good frame
             pass
         return self.current_frame
+
+
+
+
