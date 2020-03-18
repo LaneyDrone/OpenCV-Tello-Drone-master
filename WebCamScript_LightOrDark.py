@@ -1,13 +1,15 @@
-# An example of reading and processing drone's video feed
+# Hold something white up to your webcam.  Notice the output.  Now hold up something black.
 
-import Tello
+import WebCam
 import ImageTools as IT
+import time
 
-my_drone = Tello.Tello()
+my_cam = WebCam.WebCam()
+my_cam.streamon()
 
 while True:
-    frame = my_drone.get_frame()
-    shade = IT.avg_color(frame, IT.GRAY)
+    frame = my_cam.get_frame()
+    shade = IT.average_gray_value(frame)
     if shade > 100:
         print("light")
     else:
