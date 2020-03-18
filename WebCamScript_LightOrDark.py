@@ -1,15 +1,12 @@
-#An example of interfacing with the live video feed from your webcam
+# An example of reading and processing drone's video feed
 
-import WebCam
+import Tello
 import ImageTools as IT
-import time
 
-my_cam = WebCam.WebCam()
-print("initialized")
-my_cam.streamon()
+my_drone = Tello.Tello()
 
 while True:
-    frame = my_cam.get_frame()
+    frame = my_drone.get_frame()
     shade = IT.avg_color(frame, IT.GRAY)
     if shade > 100:
         print("light")
