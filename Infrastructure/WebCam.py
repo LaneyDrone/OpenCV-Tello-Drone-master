@@ -1,7 +1,7 @@
-# Utility progrm to interface with your webcam.
 import cv2
 import threading
-import pyautogui
+import time
+import numpy as np
 
 class WebCam:
     def __init__(self):
@@ -11,24 +11,27 @@ class WebCam:
         self.video_thread = threading.Thread(target=self._video_thread)
         self.video_thread.daemon = False
         self.video_thread.start()
-        self.count = 0
+
     def _video_thread(self):
         # Creating stream capture object
-        cap = cv2.VideoCapture(0)
-        while True:
+        cap = cv2.VideoCapture(0) 
+        while(True):
             self.ret, self.frame = cap.read()
             if self.stream_state and self.ret:
-                cv2.imshow('space to capture', self.frame)
+                cv2.imshow('Web Cam', self.frame)
                 # Video Stream is closed if escape key is pressed
                 k = cv2.waitKey(1) & 0xFF
-                if k == 27:
+                if k == 27 & 0xFF == ord('q'):
                     break
-                    cap.release()
-                    cv2.destroyAllWindows()
-                elif k == 32:
-                    file_name = "web_cam_capture_" + str(self.count)
-                    cv2.imwrite(file_name + ".png", self.frame)
-                    self.count += 1
+        cap.release()
+        cv2.destroyAllWindows()
+        print(0xFF)
+
+    def video2(self):
+        cap = cv2.VideoCapture(0) 
+        while(True):
+            self.ret, self.frame = cap.read()
+            cv2.imshow('frame', self.frame)
 
     def streamon(self):
         self.stream_state = True

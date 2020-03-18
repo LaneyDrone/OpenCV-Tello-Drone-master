@@ -1,13 +1,12 @@
-# Allows your computer to send commands to the drone and receive its video feed
-
 import socket
 import threading
 import time
 import cv2
+import os
 from easytello.stats import Stats
-import time
 
 class Tello:
+    """test"""
     def __init__(self, tello_ip: str = '192.168.10.1', debug: bool = True):
         # Opening local UDP port on 8889 for Tello communication
         self.local_ip = ''
@@ -35,8 +34,8 @@ class Tello:
         self.command()
         self.current_frame = None
         self.current_ret = False
-        self.file_name_prefix = "FromFlight " + str(time.time())
-        self.count = 0
+        self.current_height = 0
+        self.new_height = 0
         self.video_thread = threading.Thread(target=self._video_thread)
         self.video_thread.daemon = False
         self.video_thread.start()
@@ -81,17 +80,14 @@ class Tello:
         while True:
             self.current_ret, self.current_frame = cap.read()
             if self.stream_state and self.current_ret:
-                cv2.imshow('press space to capture', self.current_frame)
+                cv2.imshow('DJI Tello', self.current_frame)
                 # Video Stream is closed if escape key is pressed
                 k = cv2.waitKey(1) & 0xFF
                 if k == 27:
                     break
                     cap.release()
                     cv2.destroyAllWindows()
-                elif k == 32:
-                    file_name = self.file_name_prefix + " " + str(self.count) + ".png"
-                    cv2.imwrite(file_name, self.current_frame)
-                    self.count += 1
+
 
     def wait(self, delay: float):
         # Displaying wait message (if 'debug' is True)
@@ -219,6 +215,15 @@ class Tello:
             pass
         return self.current_frame
 
+    def up_by(self, dist: int):
+        self.current_height = self.get_height()
+        self.new_height = self.current_height + dist
+        self.send_command('up', self.new_height)
+
+    def down_by(self, dist: int):
+        self.current_height = self.get_height()
+        self.new_height = self.current_height - dist
+        self.send_command('down', self.new_height)
 
 
 
