@@ -1,5 +1,3 @@
-#an example of reading and processing the drone's video feed
-
 import Tello
 import ImageTools as IT
 
@@ -12,3 +10,7 @@ while True:
         print("light")
     else:
         print("dark")
+
+
+
+

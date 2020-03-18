@@ -7,9 +7,6 @@ print("initialized")
 my_cam.streamon()
 
 while True:
-    pass
-
-while True:
     frame = my_cam.get_frame()
     red = IT.avg_color(frame, IT.RED)
     green = IT.avg_color(frame, IT.GREEN)
@@ -28,4 +25,5 @@ while True:
     else:
         print("I don't know")
     print()
+
     time.sleep(1)
